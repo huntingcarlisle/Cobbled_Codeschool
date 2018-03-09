@@ -9,7 +9,7 @@ a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
-dl, dt, dd, ol, ul, li,
+dl, dt, dd,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
@@ -45,43 +45,4 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
-
-h1, h2, h3, h4, h5 {
-  display: inline-block;
-}
-
- .heading2 {
-     margin-left: 2em;
-    display: block;
-}
-
- .heading3 {
-  margin-left: 3em;
-    display: block;
-}
-
- .heading4 {
-  margin-left: 4em;
-    display: block;
-}
-
- .heading5 {
-  margin-left: 5em;
-    display: block;
-}
-
-.heading1 {
-  display: block;
-}
-
-label {
-  /* float:right; */
-  display: inline-block;
-}
-input {
-
-  vertical-align: bottom;
-  position: relative;
-  *overflow: hidden;
 }
