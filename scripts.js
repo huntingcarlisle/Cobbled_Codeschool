@@ -1,19 +1,48 @@
-$(":checkbox").on("change", function(){
-  alert("The checkbox with the ID '" + this.id + "' changed");
-});
+$('input[type="checkbox"]').change(function(e) {
 
-var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {},
-    $checkboxes = $(":checkbox");
+  var checked = $(this).prop("checked"),
+      container = $(this).parent(),
+      siblings = container.siblings();
 
-$checkboxes.on("change", function(){
-  $checkboxes.each(function(){
-    checkboxValues[this.id] = this.checked;
+  container.find('input[type="checkbox"]').prop({
+    indeterminate: false,
+    checked: checked
   });
 
-  localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
-});
+  function checkSiblings(el) {
 
-// On page load
-$.each(checkboxValues, function(key, value) {
-  $("#" + key).prop('checked', value);
+    var parent = el.parent().parent(),
+        all = true;
+
+    el.siblings().each(function() {
+      return all = ($(this).children('input[type="checkbox"]').prop("checked") === checked);
+    });
+
+    if (all && checked) {
+
+      parent.children('input[type="checkbox"]').prop({
+        indeterminate: false,
+        checked: checked
+      });
+
+      checkSiblings(parent);
+
+    } else if (all && !checked) {
+
+      parent.children('input[type="checkbox"]').prop("checked", checked);
+      parent.children('input[type="checkbox"]').prop("indeterminate", (parent.find('input[type="checkbox"]:checked').length > 0));
+      checkSiblings(parent);
+
+    } else {
+
+      el.parents("li").children('input[type="checkbox"]').prop({
+        indeterminate: true,
+        checked: false
+      });
+
+    }
+
+  }
+
+  checkSiblings(container);
 });
