@@ -53,6 +53,7 @@ table {
 
 body {
   padding: 20px;
+  font-family: Helvetica;
 }
 ul {
   list-style: none;
@@ -67,3 +68,7 @@ li {
 	overflow: scroll;
 	margin: 50px 0px;
 }
+
+/* li.branch {
+  font-weight: bold;
+} */
