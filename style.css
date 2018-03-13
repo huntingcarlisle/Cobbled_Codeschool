@@ -69,6 +69,6 @@ li {
 	margin: 50px 0px;
 }
 
-/* li.branch {
+li.branch >label {
   font-weight: bold;
-} */
+}
